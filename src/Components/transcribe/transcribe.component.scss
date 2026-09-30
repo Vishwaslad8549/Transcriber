@@ -1,0 +1,8 @@
+.dropzone { display:flex; flex-direction:column; gap:4px; align-items:center; padding:32px;
+  border:2px dashed #c5c9d3; border-radius:12px; cursor:pointer;
+  &.dragging { border-color:#667eea; background:#f3f4ff; } }
+video { width:100%; max-height:320px; margin-top:16px; }
+.result li { display:flex; gap:12px; padding:8px; cursor:pointer; border-radius:6px;
+  &:hover { background:#f5f5f5; } &.active { background:#eef0ff; } }
+time { color:#667eea; font-variant-numeric:tabular-nums; min-width:48px; }
+.error { color:#c0392b; }

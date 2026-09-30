@@ -1,1 +1,77 @@
-<p>transcribe works!</p>
+<header class="topbar">
+  <h1>Transcriber</h1>
+  @if (auth.user(); as u) {
+    <div class="user">
+      <img [src]="u.picture" alt="" referrerpolicy="no-referrer" />
+      <span>{{ u.name }}</span>
+      <button (click)="auth.logout()">Log out</button>
+    </div>
+  }
+</header>
+
+<main>
+  <!-- Drop zone -->
+  <label class="dropzone" [class.dragging]="dragging()"
+         (dragover)="$event.preventDefault(); dragging.set(true)"
+         (dragleave)="dragging.set(false)"
+         (drop)="onDrop($event)">
+    <input type="file" accept=".mp3,.mp4,audio/mpeg,video/mp4" hidden (change)="onPick($event)" />
+    @if (file(); as f) {
+      <strong>{{ f.name }}</strong>
+      <span>{{ (f.size / 1048576).toFixed(1) }} MB</span>
+    } @else {
+      <strong>Drop an MP3 or MP4 here</strong>
+      <span>or click to browse (max 200MB)</span>
+    }
+  </label>
+
+  @if (error(); as msg) { <p class="error">{{ msg }}</p> }
+
+  <!-- Actions + progress -->
+  @if (file()) {
+    @switch (phase()) {
+      @case ('uploading') {
+        <progress max="100" [value]="progress()"></progress>
+        <p>Uploading... {{ progress() }}%</p>
+        <button (click)="cancel()">Cancel</button>
+      }
+      @case ('processing') {
+        <progress></progress> <!-- indeterminate -->
+        <p>Transcribing... this can take a minute for long files</p>
+        <button (click)="cancel()">Cancel</button>
+      }
+      @default {
+        <button class="primary" (click)="start()">
+          {{ phase() === 'done' ? 'Transcribe again' : 'Transcribe' }}
+        </button>
+      }
+    }
+  }
+
+  <!-- Player: a <video> element plays both mp3 and mp4 -->
+  @if (mediaUrl(); as url) {
+    <video #player [src]="url" controls (timeupdate)="onTimeUpdate()"></video>
+  }
+
+  <!-- Result -->
+  @if (transcript(); as t) {
+    <section class="result">
+      <div class="result-head">
+        <span>{{ t.language }} · {{ fmt(t.duration) }}</span>
+        <div>
+          <button (click)="copy()">Copy</button>
+          <button (click)="download()">Download .txt</button>
+        </div>
+      </div>
+
+      <ul>
+        @for (s of t.segments; track s.start; let i = $index) {
+          <li [class.active]="i === activeIndex()" (click)="seek(s.start)">
+            <time>{{ fmt(s.start) }}</time>
+            <span>{{ s.text }}</span>
+          </li>
+        }
+      </ul>
+    </section>
+  }
+</main>

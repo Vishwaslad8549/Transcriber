@@ -4,7 +4,8 @@ import { TranscribeComponent } from '../Components/transcribe/transcribe.compone
 import { authGuard } from '../Gurads/AuthGuard/auth.guard';
 
 export const routes: Routes = [
+    {path: '', component: LoginComponent },
     { path: 'login', component: LoginComponent },
-  { path: 'transcribe', component: TranscribeComponent, canActivate: [authGuard] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'transcribe', component: TranscribeComponent, canActivate: [authGuard] },
+    
 ];
