@@ -50,7 +50,10 @@ export class AuthService {
   }
 
   logout() {
-    google.accounts.id.disableAutoSelect(); // stops one-tap auto re-login
+    // Only disable auto-select if Google script is loaded
+    if (typeof google !== 'undefined' && google.accounts?.id) {
+      google.accounts.id.disableAutoSelect(); // stops one-tap auto re-login
+    }
     this._token.set(null);
     this._user.set(null);
     sessionStorage.clear();
