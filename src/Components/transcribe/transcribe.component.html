@@ -1,77 +1,137 @@
-<header class="topbar">
-  <h1>Transcriber</h1>
-  @if (auth.user(); as u) {
-    <div class="user">
-      <img [src]="u.picture" alt="" referrerpolicy="no-referrer" />
-      <span>{{ u.name }}</span>
-      <button (click)="auth.logout()">Log out</button>
-    </div>
-  }
-</header>
-
-<main>
-  <!-- Drop zone -->
-  <label class="dropzone" [class.dragging]="dragging()"
-         (dragover)="$event.preventDefault(); dragging.set(true)"
-         (dragleave)="dragging.set(false)"
-         (drop)="onDrop($event)">
-    <input type="file" accept=".mp3,.mp4,audio/mpeg,video/mp4" hidden (change)="onPick($event)" />
-    @if (file(); as f) {
-      <strong>{{ f.name }}</strong>
-      <span>{{ (f.size / 1048576).toFixed(1) }} MB</span>
-    } @else {
-      <strong>Drop an MP3 or MP4 here</strong>
-      <span>or click to browse (max 200MB)</span>
-    }
-  </label>
-
-  @if (error(); as msg) { <p class="error">{{ msg }}</p> }
-
-  <!-- Actions + progress -->
-  @if (file()) {
-    @switch (phase()) {
-      @case ('uploading') {
-        <progress max="100" [value]="progress()"></progress>
-        <p>Uploading... {{ progress() }}%</p>
-        <button (click)="cancel()">Cancel</button>
-      }
-      @case ('processing') {
-        <progress></progress> <!-- indeterminate -->
-        <p>Transcribing... this can take a minute for long files</p>
-        <button (click)="cancel()">Cancel</button>
-      }
-      @default {
-        <button class="primary" (click)="start()">
-          {{ phase() === 'done' ? 'Transcribe again' : 'Transcribe' }}
-        </button>
-      }
-    }
-  }
-
-  <!-- Player: a <video> element plays both mp3 and mp4 -->
-  @if (mediaUrl(); as url) {
-    <video #player [src]="url" controls (timeupdate)="onTimeUpdate()"></video>
-  }
-
-  <!-- Result -->
-  @if (transcript(); as t) {
-    <section class="result">
-      <div class="result-head">
-        <span>{{ t.language }} · {{ fmt(t.duration) }}</span>
-        <div>
-          <button (click)="copy()">Copy</button>
-          <button (click)="download()">Download .txt</button>
+<div class="transcribe-container">
+  <header class="topbar">
+    <div class="topbar-content">
+      <h1>Transcriber</h1>
+      @if (auth.user(); as u) {
+        <div class="user">
+          <img [src]="u.picture" alt="" referrerpolicy="no-referrer" />
+          <span>{{ u.name }}</span>
+          <button (click)="auth.logout()" class="logout-btn">Log out</button>
         </div>
-      </div>
+      }
+    </div>
+  </header>
 
-      <ul>
-        @for (s of t.segments; track s.start; let i = $index) {
-          <li [class.active]="i === activeIndex()" (click)="seek(s.start)">
-            <time>{{ fmt(s.start) }}</time>
-            <span>{{ s.text }}</span>
-          </li>
-        }
-      </ul>
-    </section>
-  }
-</main>
+  <main class="main-content">
+    <div class="upload-section">
+      <!-- Drop zone -->
+      <label class="dropzone" [class.dragging]="dragging()"
+             [class.has-file]="!!file()"
+             (dragover)="$event.preventDefault(); dragging.set(true)"
+             (dragleave)="dragging.set(false)"
+             (drop)="onDrop($event)">
+        <input type="file" accept=".mp3,.mp4,audio/mpeg,video/mp4" hidden (change)="onPick($event)" />
+        
+        <div class="dropzone-icon">
+          @if (file(); as f) {
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+            </svg>
+          } @else {
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M17,13L12,18L7,13H10V10H14V13H17Z" />
+            </svg>
+          }
+        </div>
+
+        <div class="dropzone-content">
+          @if (file(); as f) {
+            <strong>{{ f.name }}</strong>
+            <span class="file-size">{{ (f.size / 1048576).toFixed(1) }} MB</span>
+            <span class="change-file">Click to change file</span>
+          } @else {
+            <strong>Drop an MP3 or MP4 here</strong>
+            <span>or click to browse files</span>
+            <small>Maximum file size: 200MB</small>
+          }
+        </div>
+      </label>
+
+      @if (error(); as msg) { 
+        <div class="error-message">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+          </svg>
+          {{ msg }}
+        </div>
+      }
+
+      <!-- Actions + progress -->
+      @if (file()) {
+        <div class="action-section">
+          @switch (phase()) {
+            @case ('uploading') {
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="progress-fill" [style.width.%]="progress()"></div>
+                </div>
+                <p class="progress-text">Uploading... {{ progress() }}%</p>
+                <button (click)="cancel()" class="cancel-btn">Cancel</button>
+              </div>
+            }
+            @case ('processing') {
+              <div class="progress-container">
+                <div class="spinner"></div>
+                <p class="progress-text">Transcribing... this can take a minute for long files</p>
+                <button (click)="cancel()" class="cancel-btn">Cancel</button>
+              </div>
+            }
+            @default {
+              <button class="transcribe-btn" (click)="start()">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M10,16.5L16,12L10,7.5V16.5Z" />
+                </svg>
+                {{ phase() === 'done' ? 'Transcribe again' : 'Start Transcription' }}
+              </button>
+            }
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Player -->
+    @if (mediaUrl(); as url) {
+      <div class="player-section">
+        <video #player [src]="url" controls (timeupdate)="onTimeUpdate()"></video>
+      </div>
+    }
+
+    <!-- Result -->
+    @if (transcript(); as t) {
+      <section class="result-section">
+        <div class="result-header">
+          <h2>Transcript</h2>
+          <div class="result-meta">
+            <span class="language">{{ t.language }}</span>
+            <span class="duration">{{ fmt(t.duration) }}</span>
+          </div>
+          <div class="result-actions">
+            <button (click)="copy()" class="action-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
+              </svg>
+              Copy
+            </button>
+            <button (click)="download()" class="action-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+              </svg>
+              Download
+            </button>
+          </div>
+        </div>
+
+        <div class="transcript-content">
+          @for (s of t.segments; track s.start; let i = $index) {
+            <div class="transcript-segment" 
+                 [class.active]="i === activeIndex()" 
+                 (click)="seek(s.start)">
+              <time class="timestamp">{{ fmt(s.start) }}</time>
+              <p class="segment-text">{{ s.text }}</p>
+            </div>
+          }
+        </div>
+      </section>
+    }
+  </main>
+</div>
