@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { environment } from "../environments/environment.development";
+import { environment } from "../environments/environment";
 
 export interface Segment { start: number; end: number; text: string; }
 export interface Transcript { text: string; language: string; duration: number; segments: Segment[]; }

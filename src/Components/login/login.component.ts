@@ -1,7 +1,7 @@
 import { Component, ElementRef, inject, NgZone, OnInit, signal, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-login',
   standalone: true,
