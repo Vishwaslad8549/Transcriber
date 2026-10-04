@@ -47,6 +47,30 @@
         </div>
       </label>
 
+      <!-- Transcription mode selection -->
+      @if (file()) {
+        <div class="mode-selection">
+          <label class="mode-label">Transcription Mode:</label>
+          <div class="mode-options">
+            <label class="mode-option">
+              <input type="radio" [value]="'hindi'" [ngModel]="mode()" (ngModelChange)="mode.set($event)" />
+              <span>Hindi</span>
+              <small>Best for pure Hindi audio</small>
+            </label>
+            <label class="mode-option">
+              <input type="radio" [value]="'codemix'" [ngModel]="mode()" (ngModelChange)="mode.set($event)" />
+              <span>Hinglish</span>
+              <small>Hindi + English mixed speech</small>
+            </label>
+            <label class="mode-option">
+              <input type="radio" [value]="'auto'" [ngModel]="mode()" (ngModelChange)="mode.set($event)" />
+              <span>Auto-detect</span>
+              <small>Automatically detect language</small>
+            </label>
+          </div>
+        </div>
+      }
+
       @if (error(); as msg) { 
         <div class="error-message">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -103,7 +127,12 @@
           <h2>Transcript</h2>
           <div class="result-meta">
             <span class="language">{{ t.language }}</span>
-            <span class="duration">{{ fmt(t.duration) }}</span>
+            @if (t.confidence) {
+              <span class="confidence">{{ (t.confidence * 100).toFixed(1) }}% confidence</span>
+            }
+            @if (t.duration) {
+              <span class="duration">{{ fmt(t.duration) }}</span>
+            }
           </div>
           <div class="result-actions">
             <button (click)="copy()" class="action-btn">

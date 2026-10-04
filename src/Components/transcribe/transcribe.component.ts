@@ -1,8 +1,9 @@
 import { HttpEventType, HttpErrorResponse } from "@angular/common/http";
 import { Component, OnDestroy, inject, ViewChild, ElementRef, signal, computed } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { AuthService } from "../../Services/auth.service";
-import { TranscribeService, Transcript } from "../../Services/transcribe.service";
+import { TranscribeService, Transcript, TranscriptionMode } from "../../Services/transcribe.service";
 
 type Phase = 'idle' | 'uploading' | 'processing' | 'done' | 'error';
 
@@ -12,6 +13,7 @@ const ALLOWED_EXT = ['.mp3', '.mp4'];
 @Component({
   selector: 'app-transcribe',
   standalone: true,
+  imports: [FormsModule],
   templateUrl: './transcribe.component.html',
   styleUrl: './transcribe.component.scss',
 })
@@ -29,6 +31,7 @@ export class TranscribeComponent implements OnDestroy {
   error = signal<string | null>(null);
   dragging = signal(false);
   currentTime = signal(0);
+  mode = signal<TranscriptionMode>('hindi');
 
   // Segment currently being played, for highlighting
   activeIndex = computed(() => {
@@ -69,7 +72,7 @@ export class TranscribeComponent implements OnDestroy {
     this.progress.set(0);
     this.phase.set('uploading');
 
-    this.sub = this.api.transcribe(f).subscribe({
+    this.sub = this.api.transcribe(f, this.mode()).subscribe({
       next: (event) => {
         if (event.type === HttpEventType.UploadProgress && event.total) {
           const pct = Math.round((event.loaded / event.total) * 100);
