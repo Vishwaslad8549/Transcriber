@@ -13,9 +13,8 @@
   z-index: 100;
 
   .topbar-content {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 24px;
+    padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,6 +27,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
+    cursor: pointer;
   }
 
   .user {
@@ -41,20 +41,22 @@
       border-radius: 50%;
       border: 3px solid #e2e8f0;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     span {
       font-weight: 600;
       color: #475569;
       font-size: 16px;
+      cursor: pointer;
     }
 
     .logout-btn {
-      padding: 12px 20px;
+      padding: 8px 15px;
       background: #f8fafc;
       border: 2px solid #e2e8f0;
       border-radius: 10px;
-      color: #64748b;
+      color: #475569;
       cursor: pointer;
       transition: all 0.3s ease;
       font-size: 14px;

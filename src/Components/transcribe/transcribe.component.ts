@@ -108,7 +108,11 @@ export class TranscribeComponent implements OnDestroy {
   }
 
   copy() {
-    navigator.clipboard.writeText(this.plainText());
+    // Copy only the text without timestamps
+    const textOnly = (this.transcript()?.segments ?? [])
+      .map((s) => s.text.trim())
+      .join(' ');
+    navigator.clipboard.writeText(textOnly);
   }
 
   download() {
