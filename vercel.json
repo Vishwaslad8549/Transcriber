@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "public": false,
   "builds": [
     {
       "src": "dist/transcriber-fe/server/server.mjs",
@@ -18,6 +17,5 @@
       "src": "/(.*)",
       "dest": "dist/transcriber-fe/server/server.mjs"
     }
-  ],
-  "outputDirectory": "dist/transcriber-fe"
+  ]
 }
