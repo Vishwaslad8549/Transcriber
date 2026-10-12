@@ -1,21 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "dist/transcriber-fe/server/server.mjs",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["dist/transcriber-fe/**"]
-      }
-    }
-  ],
+  "trailingSlash": false,
   "routes": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "dist/transcriber-fe/server/server.mjs"
+      "src": "/.*",
+      "dest": "/index.html"
     }
   ]
 }

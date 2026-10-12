@@ -4,12 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "dev": "ng serve",
+    "build": "ng build --configuration production",
     "build:ssr": "ng build",
     "serve:ssr": "node dist/transcriber-fe/server/server.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "vercel-build": "ng build",
     "serve:ssr:transcriberFE": "node dist/transcriber-fe/server/server.mjs"
   },
   "private": true,
