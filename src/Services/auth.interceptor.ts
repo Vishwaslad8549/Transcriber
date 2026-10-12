@@ -15,7 +15,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authed).pipe(
     catchError((err) => {
-      // Session expired: back to login (but not for the login call itself)
       if (err.status === 401 && !req.url.includes('/auth/google')) auth.logout();
       return throwError(() => err);
     })
