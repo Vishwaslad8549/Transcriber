@@ -1,7 +1,11 @@
 import { Component, ElementRef, inject, NgZone, OnInit, signal, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
+import { MetaService } from '../../Services/meta.service';
 import { environment } from '../../environments/environment';
+
+declare const google: any;
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -11,9 +15,10 @@ import { environment } from '../../environments/environment';
   exportAs:'LoginComponent'
 })
 export class LoginComponent implements OnInit{
-private auth = inject(AuthService);
+  private auth = inject(AuthService);
   private router = inject(Router);
   private zone = inject(NgZone);
+  private metaService = inject(MetaService);
 
   @ViewChild('googleBtn', { static: true }) btn!: ElementRef<HTMLElement>;
 
@@ -21,6 +26,14 @@ private auth = inject(AuthService);
   error = signal<string | null>(null);
 
   async ngOnInit() {
+    // Update meta tags for login page
+    this.metaService.updateMeta({
+      title: 'Login - AI Transcriber | Secure Google Authentication',
+      description: 'Sign in to AI Transcriber with your Google account. Secure authentication to access powerful audio and video transcription features. Start transcribing in seconds.',
+      url: 'https://transcribe.vishwasladweb.site/login',
+      keywords: 'login, sign in, Google authentication, AI transcriber access, secure login, OAuth'
+    });
+    
     // Already logged in? Skip the login page
     if (this.auth.isLoggedIn()) {
       this.router.navigate(['/transcribe']);

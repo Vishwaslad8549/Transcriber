@@ -1,8 +1,9 @@
 import { HttpEventType, HttpErrorResponse } from "@angular/common/http";
-import { Component, OnDestroy, inject, ViewChild, ElementRef, signal, computed } from "@angular/core";
+import { Component, OnDestroy, inject, ViewChild, ElementRef, signal, computed, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { AuthService } from "../../Services/auth.service";
 import { TranscribeService, Transcript } from "../../Services/transcribe.service";
+import { MetaService } from "../../Services/meta.service";
 
 type Phase = 'idle' | 'uploading' | 'processing' | 'done' | 'error';
 
@@ -15,8 +16,9 @@ const ALLOWED_EXT = ['.mp3', '.mp4'];
   templateUrl: './transcribe.component.html',
   styleUrl: './transcribe.component.scss',
 })
-export class TranscribeComponent implements OnDestroy {
+export class TranscribeComponent implements OnInit, OnDestroy {
   private api = inject(TranscribeService);
+  private metaService = inject(MetaService);
   auth = inject(AuthService);
 
   @ViewChild('player') player?: ElementRef<HTMLMediaElement>;
@@ -37,6 +39,17 @@ export class TranscribeComponent implements OnDestroy {
   });
 
   private sub?: Subscription;
+
+  ngOnInit() {
+    // Update meta tags for transcribe page
+    this.metaService.updateMeta({
+      title: 'Transcribe Audio & Video - AI Transcriber | Upload & Convert',
+      description: 'Upload your MP3 audio or MP4 video files and convert them to text using advanced AI. Get accurate transcriptions with timestamps, copy text, and download results.',
+      url: 'https://transcribe.vishwasladweb.site/transcribe',
+      keywords: 'transcribe audio, transcribe video, upload MP3, upload MP4, AI transcription, speech to text converter, audio to text',
+      noIndex: true // Protected page, don't index
+    });
+  }
 
   onPick(e: Event) {
     const f = (e.target as HTMLInputElement).files?.[0];
