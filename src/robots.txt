@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /login
+Disallow: /transcribe
+
+# Sitemap location
+Sitemap: https://transcriber.vishwasladweb.site/sitemap.xml
+
+# Rate limiting
+Crawl-delay: 1
+
+# Additional information
+# This is an AI-powered transcription service
+# The /transcribe route requires authentication
+# Only authenticated users can access transcription features
