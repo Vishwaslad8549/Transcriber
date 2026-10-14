@@ -14,4 +14,4 @@ Crawl-delay: 1
 # The /transcribe route requires authentication
 # Only authenticated users can access transcription features
 
-# Generated on: 2026-10-14T09:57:21.473Z
+# Generated on: 2026-10-14T10:06:11.001Z

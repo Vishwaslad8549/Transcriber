@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:transcriberFE": "node dist/transcriber-fe/server/server.mjs",
+    "serve:ssr:transcriberFE": "node dist/server/server.mjs",
     "sitemap:generate": "node src/assets/sitemap-generator.js",
     "prebuild": "npm run sitemap:generate"
   },
