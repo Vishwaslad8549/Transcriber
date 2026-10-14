@@ -4,26 +4,26 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Home/Login Page -->
+  <!-- Home page with authentication -->
   <url>
     <loc>https://transcriber.vishwasladweb.site/</loc>
-    <lastmod>2024-10-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Login Page -->
+  <!-- Login page with Google OAuth -->
   <url>
     <loc>https://transcriber.vishwasladweb.site/login</loc>
-    <lastmod>2024-10-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Transcribe Page (Protected) -->
+  <!-- Transcription workspace (protected) -->
   <url>
     <loc>https://transcriber.vishwasladweb.site/transcribe</loc>
-    <lastmod>2024-10-11</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

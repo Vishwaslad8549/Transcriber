@@ -13,3 +13,5 @@ Crawl-delay: 1
 # This is an AI-powered transcription service
 # The /transcribe route requires authentication
 # Only authenticated users can access transcription features
+
+# Generated on: 2026-10-14T09:53:42.850Z

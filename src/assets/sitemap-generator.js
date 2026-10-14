@@ -79,28 +79,34 @@ Crawl-delay: 1
 
 // Write files
 function generateSitemapFiles() {
-  const srcDir = path.join(__dirname, '..');
+  const publicDir = path.join(__dirname, '..', '..', 'public');
+  
+  // Ensure public directory exists
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
   
   try {
     // Write XML sitemap
     fs.writeFileSync(
-      path.join(srcDir, 'sitemap.xml'),
+      path.join(publicDir, 'sitemap.xml'),
       generateXmlSitemap(),
       'utf8'
     );
-    console.log('✅ sitemap.xml generated successfully');
+    console.log('✅ public/sitemap.xml generated successfully');
 
     // Write robots.txt
     fs.writeFileSync(
-      path.join(srcDir, 'robots.txt'),
+      path.join(publicDir, 'robots.txt'),
       generateRobotsTxt(),
       'utf8'
     );
-    console.log('✅ robots.txt generated successfully');
+    console.log('✅ public/robots.txt generated successfully');
 
-    console.log('🌐 Sitemaps are ready for deployment!');
+    console.log('🌐 Sitemaps are ready for Vercel deployment!');
     console.log(`📊 Total URLs: ${urls.length}`);
     console.log(`📅 Last updated: ${currentDate}`);
+    console.log(`📁 Files saved to: ${publicDir}`);
     
   } catch (error) {
     console.error('❌ Error generating sitemap files:', error);

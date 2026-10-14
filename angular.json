@@ -28,9 +28,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/sitemap.xml",
-              "src/sitemap.html",
-              "src/robots.txt"
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -97,9 +99,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/sitemap.xml",
-              "src/sitemap.html",
-              "src/robots.txt"
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
