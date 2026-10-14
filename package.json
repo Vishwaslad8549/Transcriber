@@ -10,6 +10,7 @@
     "serve:ssr": "node dist/transcriber-fe/server/server.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "vercel-build": "ng build --configuration production --output-path=dist",
     "serve:ssr:transcriberFE": "node dist/transcriber-fe/server/server.mjs"
   },
   "private": true,
