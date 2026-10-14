@@ -23,7 +23,7 @@ export class MetaService {
     title: 'AI Transcriber - Convert Audio & Video to Text',
     description: 'Free AI-powered transcription service. Upload MP3 audio or MP4 video files and get accurate speech-to-text conversion with timestamps. Fast, secure, and easy to use.',
     keywords: 'transcription, speech to text, audio transcription, video transcription, AI transcriber, convert audio to text, MP3 transcription, MP4 transcription',
-    image: 'https://transcribe.vishwasladweb.site/assets/transcriber-og.png',
+    image: 'https://transcribe.vishwasladweb.site/assets/transcribe-logo-528.png',
     url: 'https://transcribe.vishwasladweb.site',
     type: 'website',
     author: 'AI Transcriber'
