@@ -6,7 +6,7 @@
 
   <!-- Home page with authentication -->
   <url>
-    <loc>https://transcriber.vishwasladweb.site/</loc>
+    <loc>https://transcribe-git-master-vishwas-project-432f63d2.vercel.app/</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- Login page with Google OAuth -->
   <url>
-    <loc>https://transcriber.vishwasladweb.site/login</loc>
+    <loc>https://transcribe-git-master-vishwas-project-432f63d2.vercel.app/login</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +22,7 @@
 
   <!-- Transcription workspace (protected) -->
   <url>
-    <loc>https://transcriber.vishwasladweb.site/transcribe</loc>
+    <loc>https://transcribe-git-master-vishwas-project-432f63d2.vercel.app/transcribe</loc>
     <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

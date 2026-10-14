@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseUrl = 'https://transcriber.vishwasladweb.site';
+const baseUrl = 'https://transcribe-git-master-vishwas-project-432f63d2.vercel.app';
 const currentDate = new Date().toISOString().split('T')[0];
 
 const urls = [

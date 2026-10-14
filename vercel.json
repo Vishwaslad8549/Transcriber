@@ -5,6 +5,18 @@
   "framework": "angular",
   "rewrites": [
     {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt", 
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/sitemap.html",
+      "destination": "/sitemap.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

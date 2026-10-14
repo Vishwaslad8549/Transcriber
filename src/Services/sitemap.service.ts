@@ -11,7 +11,7 @@ export interface SitemapUrl {
   providedIn: 'root'
 })
 export class SitemapService {
-  private readonly baseUrl = 'https://transcriber.vishwasladweb.site';
+  private readonly baseUrl = 'https://transcribe-git-master-vishwas-project-432f63d2.vercel.app';
   
   private urls: SitemapUrl[] = [
     {
