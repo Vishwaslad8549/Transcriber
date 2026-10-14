@@ -4,7 +4,7 @@ Allow: /login
 Disallow: /transcribe
 
 # Sitemap location
-Sitemap: https://transcribe-git-master-vishwas-project-432f63d2.vercel.app/sitemap.xml
+Sitemap: https://transcribe.vishwasladweb.site/sitemap.xml
 
 # Rate limiting
 Crawl-delay: 1
