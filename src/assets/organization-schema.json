@@ -1,0 +1,43 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AI Transcriber",
+  "url": "https://transcribe.vishwasladweb.site",
+  "logo": "https://transcribe.vishwasladweb.site/assets/transcribe-logo-528.png",
+  "description": "Leading AI-powered transcription service for audio and video files",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "name": "Vishwas"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://transcribe.vishwasladweb.site"
+  },
+  "sameAs": [
+    "https://github.com/vishwas/transcriber"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI Transcription Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Audio Transcription",
+          "description": "Convert MP3 audio files to text"
+        }
+      },
+      {
+        "@type": "Offer", 
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Video Transcription",
+          "description": "Extract speech from MP4 video files"
+        }
+      }
+    ]
+  }
+}

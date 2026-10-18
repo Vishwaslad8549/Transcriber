@@ -30,6 +30,43 @@
     cursor: pointer;
   }
 
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .faq-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: white;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
   .user {
     display: flex;
     align-items: center;

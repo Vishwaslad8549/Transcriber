@@ -190,6 +190,54 @@ h1 {
   }
 }
 
+.faq-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  .faq-text {
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .faq-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+
+    .faq-icon {
+      width: 16px;
+      height: 16px;
+      fill: white;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

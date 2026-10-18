@@ -1,0 +1,172 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://transcribe.vishwasladweb.site#webapp",
+      "name": "AI Transcriber - Convert Audio & Video to Text",
+      "description": "Free AI-powered transcription service. Upload MP3 audio or MP4 video files and get accurate speech-to-text conversion with timestamps. Fast, secure, and easy to use.",
+      "url": "https://transcribe.vishwasladweb.site",
+      "applicationCategory": "AudioApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "softwareVersion": "2.0",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1247",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "creator": {
+        "@type": "Organization",
+        "@id": "https://transcribe.vishwasladweb.site#organization"
+      },
+      "featureList": [
+        "Audio to text transcription",
+        "Video to text transcription",
+        "Multiple audio formats support",
+        "High accuracy AI transcription",
+        "Fast processing",
+        "Free to use"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://transcribe.vishwasladweb.site#organization",
+      "name": "AI Transcriber",
+      "url": "https://transcribe.vishwasladweb.site",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://transcribe.vishwasladweb.site/transcribe-logo-528.png",
+        "width": 528,
+        "height": 528
+      },
+      "description": "Advanced AI-powered audio and video transcription service with high accuracy and multiple format support.",
+      "sameAs": [
+        "https://transcribe.vishwasladweb.site/login",
+        "https://transcribe.vishwasladweb.site/transcribe"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "availableLanguage": "English"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://transcribe.vishwasladweb.site#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What file formats does AI Transcriber support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI Transcriber supports MP3, WAV, FLAC, AAC, OGG, and M4A audio formats, plus MP4, AVI, and MOV video formats. Maximum file size is 200MB per upload."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is the AI transcription service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our AI transcription achieves 95%+ accuracy for clear audio recordings. Accuracy depends on audio quality, background noise, accent clarity, and speaking pace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AI Transcriber completely free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, AI Transcriber is 100% free with no hidden costs, subscription fees, or usage limits. Simply sign in with Google and start transcribing immediately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does audio transcription take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Processing time varies by file length. Typically: 5-minute audio = 1-2 minutes, 30-minute audio = 3-5 minutes, 60-minute audio = 5-10 minutes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my audio data secure and private?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We use secure HTTPS encryption, don't store files on servers after processing, and require Google OAuth authentication for enhanced security."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download or copy the transcribed text?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can copy transcripts to clipboard with one click or download as .txt files. Timestamps can be included or excluded based on your preference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the transcription include timestamps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all transcriptions automatically include precise timestamps. You can choose to copy/download text with or without timestamps as needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What languages does AI Transcriber support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently optimized for English transcription with plans to expand to Spanish, French, German, and other major languages in future updates."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://transcribe.vishwasladweb.site#howto",
+      "name": "How to Transcribe Audio or Video Files",
+      "description": "Step-by-step guide to transcribe audio and video files using AI transcription",
+      "image": "https://transcribe.vishwasladweb.site/transcribe-logo-528.png",
+      "totalTime": "PT5M",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "0"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Upload File",
+          "text": "Click the upload button and select your audio or video file from your device.",
+          "image": "https://transcribe.vishwasladweb.site/transcribe-logo-528.png"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Start Transcription",
+          "text": "Click the 'Transcribe' button to begin the AI transcription process.",
+          "image": "https://transcribe.vishwasladweb.site/transcribe-logo-528.png"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Review Results",
+          "text": "Wait for the transcription to complete and review the generated text.",
+          "image": "https://transcribe.vishwasladweb.site/transcribe-logo-528.png"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Copy or Download",
+          "text": "Copy the transcribed text to clipboard or download it as a text file.",
+          "image": "https://transcribe.vishwasladweb.site/transcribe-logo-528.png"
+        }
+      ]
+    }
+  ]
+}

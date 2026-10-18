@@ -1,0 +1,29 @@
+<div class="faq-container">
+  <div class="faq-header">
+    <h1>Frequently Asked Questions</h1>
+    <p>Find answers to common questions about AI Transcriber</p>
+  </div>
+
+  <div class="faq-list">
+    <div *ngFor="let faq of faqs; let i = index" class="faq-item">
+      <button 
+        class="faq-question" 
+        (click)="toggleExpand(i)"
+        [class.active]="expandedIndex === i"
+      >
+        <span class="question-text">{{ faq.question }}</span>
+        <span class="expand-icon">{{ expandedIndex === i ? '−' : '+' }}</span>
+      </button>
+      
+      <div *ngIf="expandedIndex === i" class="faq-answer">
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-cta">
+    <h2>Ready to transcribe?</h2>
+    <p>Start converting your audio and video files to text for free</p>
+    <a href="/transcribe" class="cta-button">Go to Transcriber</a>
+  </div>
+</div>
